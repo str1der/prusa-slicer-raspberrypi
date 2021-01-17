@@ -98,10 +98,10 @@ sudo apt install cmake libboost-dev libboost-thread-dev libboost-filesystem-dev 
 After downloading the package and extracting it from the archive, follow the commands below in order.
 ```
 cd "package-directory-path"
-mkdir building
-cd creation
-cmake .. -DCMAKE_BUILD_TYPE = Broadcast -DSLIC3R_WX_STABLE = 1 -DSLIC3R_FHS = 1 -DSLIC3R_BUILD_TESTS = OFF
-make -j $ (nproc) DESTDIR = $ PWD / deb install
+mkdir build
+cd build
+cmake .. -DCMAKE_BUILD_TYPE=Release -DSLIC3R_WX_STABLE=1 -DSLIC3R_FHS=1 -DSLIC3R_BUILD_TESTS=OFF
+make -j$(nproc) DESTDIR=$PWD/deb install
 ```
 
 # Preparing a DEB package
@@ -109,22 +109,22 @@ make -j $ (nproc) DESTDIR = $ PWD / deb install
 After the compilation is complete, you can create the .deb package by running the commands below.
 
 ```
-cat> deb / DEBIAN / control << EOD
-Package: prusa slicer
+cat > deb/DEBIAN/control <<EOD
+Package: prusa-slicer
 Version: 2.3.0
 Maintainer: fkarakutuk <https://bfkarakutuk.wordpress.com/>
 Priority: optional
-Department: Science
+Section: science
 Bugs: https://github.com/str1der/prusa-slicer-raspberrypi/issues
 Homepage: https://github.com/str1der/prusa-slicer-raspberrypi
-Depends on: libboost-all-dev, libcurl4, libglew2.1, libtbb2, libnlopt0, libopenvdb5.2, libqhull7, libwxgtk3.0-gtk3-0v5, libcgal-dev, libglu1-mesa, libv5gtk
+Depends: libboost-all-dev, libcurl4, libglew2.1, libtbb2, libnlopt0, libopenvdb5.2, libqhull7, libwxgtk3.0-gtk3-0v5, libcgal-dev, libglu1-mesa, libwxgtk3.0-0v5
 Architecture: arm64
 Description: Prusa-Slic3r 2.3.0
- Compiled for raspberry pi 4 running 2020-05-27-raspios-buster-arm64.
+ compiled for raspberry pi 4 running 2020-05-27-raspios-buster-arm64.
 EOD
 
 
-fakeroot dpkg-deb -b ./deb/.
+fakeroot dpkg-deb -b ./deb/ .
 ```
 
 
