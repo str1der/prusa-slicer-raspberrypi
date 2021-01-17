@@ -65,8 +65,6 @@ fakeroot dpkg-deb -b ./deb/ .
 
 # prusa-slicer-raspberrypi
 
-! [Screenshot] (https://github.com/str1der/prusa-slicer-raspberrypi/blob/main/Prusa-Slicer.png)
-
 Prusa slicer 2.3.0 is a 64 bit version of the final version compiled for Raspberry pi 4. Runs on 2020-05-27-raspios-buster-arm64. Also tested on 2020-08-20-raspios-buster-arm64.
 
 # Setup
